@@ -11,11 +11,8 @@ The JD says: **state your availability (start date, end date) clearly in your re
 - [ ] Google Scholar — replace `href="#"` (2 places: hero + contact)
 - [ ] LinkedIn — replace `href="#"` (2 places: hero + contact)
 
-## 3. Photo
-Save a headshot as `photo.jpg` in this folder, then in index.html replace
-    <div class="photo-ph">Add photo.jpg</div>
-with
-    <img class="photo" src="photo.jpg" alt="Yizhou Wu">
+## 3. Photo  — DONE
+`photo.jpg` is in place (512x512, cropped from your headshot) and wired into index.html.
 
 ## 4. One figure  (this is the single biggest visual upgrade)
 Export a BrainDINO result figure to `figures/braindino.png` and uncomment the
