@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Generative Sequential Recommendation on Amazon Reviews 2023 — Yizhou Wu</title>
+<meta name="description" content="End-to-end generative sequential recommendation pipeline on Amazon Reviews 2023: PySpark data engineering and a TIGER reproduction with RQ-VAE Semantic IDs.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+<style>
+:root{
+  --bg:#ffffff; --bg-soft:#f6f7f9; --fg:#14161a; --fg-soft:#5b6270;
+  --line:#e4e7ec; --accent:#2563eb; --accent-soft:#eff4ff; --chip:#f1f3f6;
+  --max:900px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0e1013; --bg-soft:#15181d; --fg:#e9ecf1; --fg-soft:#9aa3b2;
+    --line:#252a32; --accent:#6ea8fe; --accent-soft:#182234; --chip:#1b1f26;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0; background:var(--bg); color:var(--fg);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  font-size:16.5px; line-height:1.65; -webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 22px}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3{line-height:1.25; margin:0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.9em;
+     background:var(--chip); padding:1px 5px; border-radius:4px}
+
+nav{border-bottom:1px solid var(--line)}
+nav .wrap{display:flex; align-items:center; height:56px; gap:16px}
+nav a{color:var(--fg-soft); font-size:15px}
+nav a:hover{color:var(--fg); text-decoration:none}
+
+header{padding:52px 0 40px; border-bottom:1px solid var(--line)}
+h1{font-size:33px; letter-spacing:-0.02em; margin-bottom:10px}
+.sub{color:var(--fg-soft); font-size:16.5px; margin-bottom:20px}
+.summary{font-size:17.5px; max-width:64ch; margin:0}
+.badges{display:flex; gap:8px; flex-wrap:wrap; margin-top:20px}
+.badge{font-size:12.5px; font-weight:600; letter-spacing:.03em; color:var(--fg-soft);
+       background:var(--chip); padding:4px 11px; border-radius:20px}
+
+section{padding:44px 0; border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:none}
+h2{font-size:13.5px; text-transform:uppercase; letter-spacing:.09em; color:var(--fg-soft);
+   font-weight:650; margin-bottom:22px}
+h3{font-size:18px; margin:0 0 4px}
+.part{padding:22px 0; border-top:1px solid var(--line)}
+.part:first-of-type{border-top:none; padding-top:0}
+.part .kicker{font-size:12.5px; font-weight:650; letter-spacing:.05em; text-transform:uppercase;
+              color:var(--accent); margin-bottom:6px}
+.part .meta{color:var(--fg-soft); font-size:14.5px; margin-bottom:14px}
+p{margin:0 0 14px}
+.callout{background:var(--bg-soft); border:1px solid var(--line); border-radius:10px;
+         padding:16px 18px; margin:0 0 20px; font-size:16px}
+.callout b{font-weight:650}
+
+.find{padding:16px 0; border-top:1px solid var(--line)}
+.find:first-of-type{border-top:none}
+.find h4{font-size:16px; margin:0 0 5px; font-weight:650}
+.find p{margin:0; font-size:15.5px}
+.find .num{color:var(--fg); font-weight:650}
+.tbl{width:100%; border-collapse:collapse; font-size:15px; margin:4px 0 0}
+.tbl td{padding:5px 14px 5px 0; border-bottom:1px solid var(--line); vertical-align:top}
+.tbl td:first-child{color:var(--fg-soft); white-space:nowrap}
+.tbl tr:last-child td{border-bottom:none}
+.arrow{color:var(--fg-soft)}
+
+.learn{display:grid; grid-template-columns:1fr 1fr; gap:28px}
+@media (max-width:700px){.learn{grid-template-columns:1fr; gap:22px}}
+.learn h3{font-size:15px; margin-bottom:9px}
+.learn ul{margin:0; padding-left:19px; font-size:15.5px}
+.learn li{margin-bottom:5px}
+ol.next{margin:0; padding-left:20px; font-size:16px}
+ol.next li{margin-bottom:9px}
+footer{padding:30px 0 52px; color:var(--fg-soft); font-size:14px}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap"><a href="../index.html">← Yizhou Wu</a></div></nav>
+
+<header><div class="wrap">
+  <h1>Generative Sequential Recommendation on Amazon Reviews 2023</h1>
+  <p class="sub">PySpark data engineering + a TIGER reproduction · 2026</p>
+  <p class="summary">
+    An end-to-end generative sequential recommendation pipeline built in two connected halves: a PySpark stage
+    that turns 59.77M raw Amazon reviews into a clean leave-one-out benchmark, and a reproduction of TIGER —
+    RQ-VAE Semantic IDs feeding generative retrieval. Everything runs on one machine (32 cores, 251 GB RAM,
+    RTX 6000 Ada): no cluster, no cloud. The point of the project was less to hit a number than to measure
+    where the time actually goes, and to report what the measurements said even when they said "no effect."
+  </p>
+  <div class="badges">
+    <span class="badge">PySpark</span>
+    <span class="badge">RQ-VAE</span>
+    <span class="badge">Semantic IDs</span>
+    <span class="badge">Generative retrieval</span>
+    <span class="badge">Sentence-T5</span>
+    <span class="badge">Single-node</span>
+  </div>
+</div></header>
+
+<section><div class="wrap">
+  <h2>Design judgment</h2>
+  <div class="callout">
+    <b>A 40 GB working set against 251 GB of RAM.</b> A cluster would only have added shuffle overhead across
+    the network for a dataset that fits in memory, so I deliberately ran Spark in local mode and spent the
+    effort on the bottlenecks that actually bind at this scale: caching in iterative jobs, join strategy, and
+    partition-level skew. Distribution is a cost, not a default.
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Part A — PySpark data engineering</h2>
+
+  <div class="part">
+    <div class="kicker">Complete</div>
+    <h3>From 59.77M raw reviews to a leave-one-out benchmark</h3>
+    <div class="meta">3 categories · explicit schemas · iterative 5-core filtering</div>
+    <table class="tbl">
+      <tr><td>Raw reviews</td><td>59.77M <span class="arrow">→</span> 59.14M after deduplication</td></tr>
+      <tr><td>On-disk working set</td><td>26 GB <span class="arrow">→</span> 3.6 GB with explicit schemas</td></tr>
+      <tr><td>Users (5-core)</td><td>22M <span class="arrow">→</span> 2.39M</td></tr>
+      <tr><td>Items (5-core)</td><td>3.5M <span class="arrow">→</span> 715k</td></tr>
+      <tr><td>Interactions per user</td><td>2.69 <span class="arrow">→</span> 9.55</td></tr>
+      <tr><td>Leave-one-out split</td><td>18.04M train / 2.39M valid / 2.39M test</td></tr>
+    </table>
+  </div>
+
+  <div class="find">
+    <h4>Caching turned a killed job into 237 seconds</h4>
+    <p>
+      k-core filtering is iterative, and Spark's lazy DAG recomputes the whole lineage on every round unless
+      you break it. Uncached, <span class="num">round 6 alone took 188 s</span> — <span class="num">15×</span>
+      the cached round — and <span class="num">round 7 exceeded 250 s and was killed</span>. Adding
+      <code>.cache()</code> converged all <span class="num">8 rounds in 237 s</span>.
+    </p>
+  </div>
+
+  <div class="find">
+    <h4>Skew is a property of the partition key, not of the data</h4>
+    <p>
+      Item frequency is sharply power-law: the hottest item has <span class="num">13,970</span> interactions,
+      about <span class="num">1160×</span> the median of 12. The intuitive conclusion is that stragglers will
+      dominate. Measured at 256 partitions, row-level imbalance was only <span class="num">1.05×</span> by user
+      and <span class="num">1.18×</span> by item — because no single key is large enough to overflow a
+      partition. The skew that matters is the skew relative to partition size.
+    </p>
+  </div>
+
+  <div class="find">
+    <h4>Broadcast joins have a size cliff, and you can move it</h4>
+    <p>
+      Broadcasting the full 3.5M-row metadata table failed outright: the serialized payload exceeded 1 GB and
+      blew past the driver's <code>maxResultSize</code>. Filtering down to the
+      <span class="num">715k</span> relevant items first made it broadcastable and
+      <span class="num">1.37×</span> faster than the SortMergeJoin. I confirmed with <code>.explain()</code>
+      that the physical plan actually flipped from SortMergeJoin to BroadcastHashJoin, rather than assuming the
+      hint took.
+    </p>
+  </div>
+
+  <div class="find">
+    <h4>Adaptive Query Execution: no effect (a negative result worth reporting)</h4>
+    <p>
+      AQE on vs. off measured <span class="num">7.0 s vs 8.2 s</span> — within noise and in the wrong
+      direction to claim a win. AQE exists to fix skewed and misestimated shuffles; this data was already
+      balanced, so there was nothing for it to repair. Reporting it as a null result is more useful than
+      quietly dropping the experiment.
+    </p>
+  </div>
+
+  <div class="find">
+    <h4>Instrumentation as a deliverable</h4>
+    <p>
+      Shipped as a parameterized pipeline with a README, a BENCHMARKS file recording every timing above, an
+      environment audit so the numbers are reproducible on a known machine, and a 10-lesson Spark onboarding
+      notebook.
+    </p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Part B — TIGER reproduction</h2>
+
+  <div class="part">
+    <div class="kicker">Stage 1 — trained</div>
+    <h3>Semantic IDs from an RQ-VAE over frozen text embeddings</h3>
+    <div class="meta">Sentence-T5-base (frozen) · residual vector quantization</div>
+    <p>
+      Each item's text is encoded once by a frozen Sentence-T5-base, giving
+      <span class="num">715,729 × 768</span> embeddings. An RQ-VAE compresses 768 → 32 and quantizes the
+      residual in three stages against <span class="num">3 codebooks × 256 entries</span>, trained with a
+      straight-through estimator, k-means codebook initialization, and dead-code revival.
+    </p>
+    <table class="tbl">
+      <tr><td>Training</td><td>100 epochs / ~200 s</td></tr>
+      <tr><td>Reconstruction loss</td><td>0.67 <span class="arrow">→</span> 0.42</td></tr>
+      <tr><td>Codebook utilization</td><td>100% at all three levels — no collapse</td></tr>
+      <tr><td>Unique 3-code combinations</td><td>484k</td></tr>
+      <tr><td>Collisions</td><td>231.6k, resolved with a 4th token</td></tr>
+      <tr><td>Output</td><td>every item → Semantic ID <code>(c1, c2, c3, c_collision)</code></td></tr>
+    </table>
+    <p>
+      Codebook collapse is the standard failure mode here — a few codes absorb everything and the rest go
+      dead, silently destroying the ID space. k-means initialization plus dead-code revival held utilization at
+      100% across all three levels, which is the result that makes the ID space usable downstream.
+    </p>
+  </div>
+
+  <div class="part">
+    <div class="kicker">Stage 2 — architecture and evaluation protocol</div>
+    <h3>Generative retrieval over the Semantic ID space</h3>
+    <div class="meta">T5 encoder-decoder · constrained beam search</div>
+    <p>
+      Stage 2 turns retrieval into sequence generation. Each user's interaction history is rewritten as a
+      sequence of semantic tokens, and a T5 encoder-decoder is trained to generate the Semantic ID of the next
+      item directly — replacing an embedding lookup over a 715k-item catalog with a decode over a
+      four-token vocabulary. Decoding is constrained so that beam search can only emit valid, in-catalog ID
+      prefixes, and the model is scored with Recall@K and NDCG@K on the leave-one-out split built in Part A.
+    </p>
+    <p>
+      <em>Training results for Stage 2 are not reported here.</em>
+    </p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>What I took away</h2>
+  <div class="learn">
+    <div>
+      <h3>Spark internals</h3>
+      <ul>
+        <li>Lazy evaluation: transformations vs. actions, and why iterative jobs recompute</li>
+        <li>Narrow vs. wide dependencies; shuffle and partition tuning</li>
+        <li>Caching as the fix for repeated lineage in iterative algorithms</li>
+        <li>Broadcast vs. sort-merge join, and the driver-side size cliff</li>
+        <li>Reading physical plans with <code>.explain()</code> instead of trusting hints</li>
+        <li>Quantifying skew against partition size; AQE and when it does nothing</li>
+        <li>Parquet, Spark UI diagnostics</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Modeling</h3>
+      <ul>
+        <li>Vector and residual quantization; RQ-VAE</li>
+        <li>Straight-through estimator for non-differentiable quantization</li>
+        <li>Codebook collapse and its mitigations (k-means init, dead-code revival)</li>
+        <li>Semantic IDs as a discrete item representation</li>
+        <li>Generative retrieval (TIGER) for sequential recommendation</li>
+        <li>Leave-one-out evaluation protocol</li>
+      </ul>
+      <h3 style="margin-top:18px">Engineering judgment</h3>
+      <ul>
+        <li>Choosing local mode from the data-to-memory ratio rather than by habit</li>
+        <li>Treating instrumentation and benchmarks as deliverables</li>
+        <li>Publishing negative results instead of burying them</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Next steps</h2>
+  <ol class="next">
+    <li>Train the Stage 2 T5 encoder-decoder on the semantic token sequences and report Recall@K / NDCG@K
+        against sequential baselines on the Part A split.</li>
+    <li>Ablate the collision token: measure how much of the retrieval quality depends on the 4th token that
+        disambiguates the 231.6k colliding items.</li>
+    <li>Test whether Semantic ID structure helps in the cold-start regime, where a generative decoder should
+        degrade more gracefully than an ID-embedding lookup.</li>
+    <li>Capture Spark UI execution traces to back the Part A timings with stage-level evidence rather than
+        wall-clock alone.</li>
+  </ol>
+</div></section>
+
+<footer><div class="wrap"><a href="../index.html">← Back to homepage</a></div></footer>
+
+</body>
+</html>
