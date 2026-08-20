@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Yizhou Wu — Foundation Models & Representation Learning</title>
-<meta name="description" content="Yizhou Wu — PhD candidate at Georgia Tech working on large-scale self-supervised learning, multimodal foundation models, and LLM agents.">
+<title>Yizhou Wu</title>
+<meta name="description" content="Yizhou Wu — PhD candidate in Electrical Engineering at Georgia Tech, working on self-supervised representation learning and foundation models for medical imaging.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
 <style>
 :root{
   --bg:#ffffff; --bg-soft:#f6f7f9; --fg:#14161a; --fg-soft:#5b6270;
   --line:#e4e7ec; --accent:#2563eb; --accent-soft:#eff4ff; --chip:#f1f3f6;
-  --max:940px;
+  --max:900px;
 }
 @media (prefers-color-scheme: dark){
   :root{
@@ -30,13 +30,6 @@ a{color:var(--accent); text-decoration:none}
 a:hover{text-decoration:underline}
 h1,h2,h3{line-height:1.25; margin:0}
 
-/* ---------- REMOVE THIS BLOCK BEFORE PUBLISHING ---------- */
-.draft{background:#fff4e5;color:#7a4a00;border-bottom:1px solid #f0d9b5;font-size:14px}
-@media (prefers-color-scheme: dark){.draft{background:#2b2113;color:#f0c479;border-color:#453a1f}}
-.draft .wrap{padding-top:10px;padding-bottom:10px}
-/* --------------------------------------------------------- */
-
-/* nav */
 nav{position:sticky; top:0; z-index:10; background:color-mix(in srgb,var(--bg) 88%,transparent);
     backdrop-filter:saturate(160%) blur(10px); border-bottom:1px solid var(--line)}
 nav .wrap{display:flex; align-items:center; justify-content:space-between; height:56px; gap:16px}
@@ -44,17 +37,16 @@ nav .brand{font-weight:650; color:var(--fg)}
 nav .links{display:flex; gap:20px; font-size:15px; flex-wrap:wrap}
 nav .links a{color:var(--fg-soft)}
 nav .links a:hover{color:var(--fg); text-decoration:none}
-@media (max-width:560px){nav .links{display:none}}
+@media (max-width:620px){nav .links{display:none}}
 
-/* hero */
-header{padding:64px 0 52px; border-bottom:1px solid var(--line)}
-.hero{display:grid; grid-template-columns:1fr 168px; gap:40px; align-items:start}
+header{padding:60px 0 50px; border-bottom:1px solid var(--line)}
+.hero{display:grid; grid-template-columns:1fr 160px; gap:40px; align-items:start}
 @media (max-width:700px){.hero{grid-template-columns:1fr; gap:26px}}
-.hero h1{font-size:40px; letter-spacing:-0.02em; margin-bottom:10px}
-.role{color:var(--fg-soft); font-size:17px; margin-bottom:18px}
+.hero h1{font-size:38px; letter-spacing:-0.02em; margin-bottom:10px}
+.role{color:var(--fg-soft); font-size:16.5px; margin-bottom:18px}
 .role strong{color:var(--fg); font-weight:600}
-.pitch{font-size:18px; max-width:56ch; margin-bottom:24px}
-.photo{width:168px; height:168px; border-radius:14px; object-fit:cover; background:var(--bg-soft);
+.pitch{font-size:17.5px; max-width:58ch; margin-bottom:24px}
+.photo{width:160px; height:160px; border-radius:14px; object-fit:cover; background:var(--bg-soft);
        border:1px solid var(--line); display:block}
 .cta{display:flex; gap:10px; flex-wrap:wrap}
 .btn{display:inline-block; padding:9px 16px; border-radius:8px; font-size:15px; font-weight:520;
@@ -63,77 +55,76 @@ header{padding:64px 0 52px; border-bottom:1px solid var(--line)}
 .btn.primary{background:var(--accent); border-color:var(--accent); color:#fff}
 .btn.primary:hover{opacity:.9; color:#fff}
 
-/* sections */
-section{padding:52px 0; border-bottom:1px solid var(--line)}
+section{padding:50px 0; border-bottom:1px solid var(--line)}
 section:last-of-type{border-bottom:none}
-h2{font-size:14px; text-transform:uppercase; letter-spacing:.09em; color:var(--fg-soft);
-   font-weight:650; margin-bottom:26px}
+h2{font-size:13.5px; text-transform:uppercase; letter-spacing:.09em; color:var(--fg-soft);
+   font-weight:650; margin-bottom:24px}
+.lead{font-size:17px; max-width:66ch; margin:0 0 16px}
+.lead:last-child{margin-bottom:0}
 
-/* focus pillars */
-.pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
-@media (max-width:760px){.pillars{grid-template-columns:1fr}}
-.pillar{background:var(--bg-soft); border:1px solid var(--line); border-radius:12px; padding:20px}
-.pillar h3{font-size:16.5px; margin-bottom:8px}
-.pillar p{margin:0; font-size:15px; color:var(--fg-soft)}
-
-/* projects */
-.proj{padding:24px 0; border-top:1px solid var(--line)}
+.proj{padding:26px 0; border-top:1px solid var(--line)}
 .proj:first-of-type{border-top:none; padding-top:0}
-.proj-head{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:6px}
-.proj h3{font-size:20px; letter-spacing:-0.01em}
-.tag{font-size:12px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+.proj-head{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:5px}
+.proj h3{font-size:19.5px; letter-spacing:-0.01em}
+.tag{font-size:11.5px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
      color:var(--accent); background:var(--accent-soft); padding:3px 9px; border-radius:20px}
 .proj .meta{color:var(--fg-soft); font-size:14.5px; margin-bottom:12px}
 .proj p{margin:0 0 12px}
-.proj ul{margin:0 0 12px; padding-left:20px}
+.proj ul{margin:0 0 4px; padding-left:20px}
 .proj li{margin-bottom:5px}
-.proj li b{font-weight:620}
-.relevance{font-size:14.5px; color:var(--fg-soft); border-left:3px solid var(--accent);
-           padding:8px 0 8px 14px; background:linear-gradient(90deg,var(--accent-soft),transparent 70%);
-           border-radius:0 8px 8px 0}
-.stats{display:flex; gap:26px; flex-wrap:wrap; margin:16px 0 18px}
-.stat .n{font-size:24px; font-weight:680; letter-spacing:-0.02em; display:block}
+.stats{display:flex; gap:28px; flex-wrap:wrap; margin:14px 0 16px}
+.stat .n{font-size:23px; font-weight:680; letter-spacing:-0.02em; display:block}
 .stat .l{font-size:13px; color:var(--fg-soft)}
-figure{margin:16px 0}
+figure{margin:16px 0 4px}
 figure img{width:100%; border-radius:10px; border:1px solid var(--line); background:var(--bg-soft)}
 figcaption{font-size:13.5px; color:var(--fg-soft); margin-top:8px}
 
-/* publications */
-.pub{padding:16px 0; border-top:1px solid var(--line)}
+.pub{padding:15px 0; border-top:1px solid var(--line); display:grid;
+     grid-template-columns:26px 1fr; gap:14px}
 .pub:first-of-type{border-top:none; padding-top:0}
+.pub .num{color:var(--fg-soft); font-size:14px; font-variant-numeric:tabular-nums; padding-top:2px}
 .pub .t{font-weight:600; margin-bottom:4px}
 .pub .a{font-size:14.5px; color:var(--fg-soft)}
-.pub .a em{color:var(--fg); font-style:normal; font-weight:600}
+.pub .a b{color:var(--fg); font-weight:650}
 .pub .v{font-size:14.5px; color:var(--fg-soft); margin-top:3px}
-.status{font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.04em;
-        background:var(--chip); color:var(--fg-soft); padding:2px 8px; border-radius:20px; margin-left:6px}
+.pub .v em{font-style:italic}
+.status{font-size:11.5px; font-weight:600; text-transform:uppercase; letter-spacing:.04em;
+        background:var(--chip); color:var(--fg-soft); padding:2px 8px; border-radius:20px;
+        margin-left:6px; white-space:nowrap}
 
-/* skills */
-.skills{display:grid; grid-template-columns:150px 1fr; gap:14px 24px; font-size:15px}
-@media (max-width:620px){.skills{grid-template-columns:1fr; gap:4px 0}}
+.entry{padding:18px 0; border-top:1px solid var(--line)}
+.entry:first-of-type{border-top:none; padding-top:0}
+.entry-head{display:flex; justify-content:space-between; gap:16px; align-items:baseline; flex-wrap:wrap}
+.entry h3{font-size:17.5px}
+.entry .when{color:var(--fg-soft); font-size:14.5px; white-space:nowrap}
+.entry .where{color:var(--fg-soft); font-size:15px; margin-bottom:8px}
+.entry p{margin:0}
+.entry ul{margin:8px 0 0; padding-left:20px}
+.entry li{margin-bottom:4px}
+
+.skills{display:grid; grid-template-columns:170px 1fr; gap:12px 24px; font-size:15.5px}
+@media (max-width:620px){.skills{grid-template-columns:1fr; gap:2px 0}}
 .skills dt{color:var(--fg-soft); font-weight:600}
-.skills dd{margin:0 0 6px}
+.skills dd{margin:0 0 8px}
 
-/* contact */
-.contact-list{display:flex; gap:24px; flex-wrap:wrap; font-size:16px}
-footer{padding:34px 0 56px; color:var(--fg-soft); font-size:14px}
+.two{display:grid; grid-template-columns:1fr 1fr; gap:36px}
+@media (max-width:700px){.two{grid-template-columns:1fr; gap:28px}}
+.two h3{font-size:15px; margin-bottom:10px}
+.two ul{margin:0; padding-left:19px; font-size:15.5px}
+.two li{margin-bottom:6px}
+
+.contact-list{display:flex; gap:22px; flex-wrap:wrap; font-size:16px; margin-top:12px}
+footer{padding:32px 0 54px; color:var(--fg-soft); font-size:14px}
 </style>
 </head>
 <body>
-
-<!-- ============ DRAFT BANNER — DELETE THIS <div> BEFORE PUBLISHING ============ -->
-<div class="draft"><div class="wrap">
-  <b>Draft.</b> Fill in the items marked <code>TODO</code> (resume PDF, Scholar/LinkedIn URLs, result figure),
-  then delete this banner block from <code>index.html</code>.
-</div></div>
-<!-- ========================================================================== -->
 
 <nav><div class="wrap">
   <span class="brand">Yizhou Wu</span>
   <div class="links">
     <a href="#research">Research</a>
-    <a href="#projects">Projects</a>
     <a href="#publications">Publications</a>
+    <a href="#experience">Experience</a>
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
   </div>
@@ -144,22 +135,20 @@ footer{padding:34px 0 56px; color:var(--fg-soft); font-size:14px}
     <div>
       <h1>Yizhou Wu</h1>
       <p class="role">
-        PhD Candidate, <strong>Electrical &amp; Computer Engineering, Georgia Institute of Technology</strong><br>
-        Research in the Department of Radiation Oncology &amp; Winship Cancer Institute, <strong>Emory University</strong>
+        PhD Candidate, <strong>Electrical Engineering (Medical Imaging &amp; AI)</strong><br>
+        Georgia Institute of Technology · Expected May 2028<br>
+        Research in the Department of Radiation Oncology &amp; Winship Cancer Institute, Emory University
       </p>
       <p class="pitch">
-        I build <strong>foundation models that learn from unlabeled data at scale</strong> — pretraining on millions
-        of images with self-distillation, then studying which representations actually transfer. Increasingly, I work on
-        the layer above: <strong>LLM agents and multimodal systems</strong> that turn those representations into decisions.
+        I work on <strong>representation learning for medical imaging</strong> — training self-supervised
+        models on large, heterogeneous, mostly unlabeled image collections, and studying when those
+        representations actually transfer to new tasks, new institutions, and new imaging modalities.
       </p>
       <div class="cta">
-        <!-- TODO: put your resume PDF next to index.html and keep this filename, or change the href -->
-        <a class="btn primary" href="Yizhou_Wu_Resume.pdf">Resume (PDF)</a>
-        <!-- TODO: confirm GitHub handle -->
+        <a class="btn primary" href="Yizhou_Wu_CV.pdf">CV (PDF)</a>
         <a class="btn" href="https://github.com/mclwu22">GitHub</a>
-        <!-- TODO: Google Scholar URL -->
-        <a class="btn" href="#">Google Scholar</a>
-        <!-- TODO: LinkedIn URL -->
+        <a class="btn" href="https://scholar.google.com/citations?user=cyNeIz0AAAAJ&amp;hl=en">Google Scholar</a>
+        <!-- TODO: replace with your LinkedIn URL, or delete this button -->
         <a class="btn" href="#">LinkedIn</a>
         <a class="btn" href="mailto:ywu3024@gatech.edu">Email</a>
       </div>
@@ -169,189 +158,269 @@ footer{padding:34px 0 56px; color:var(--fg-soft); font-size:14px}
 </div></header>
 
 <section id="research"><div class="wrap">
-  <h2>What I work on</h2>
-  <div class="pillars">
-    <div class="pillar">
-      <h3>Self-supervised pretraining at scale</h3>
-      <p>Training encoders on millions of unlabeled samples drawn from 20 heterogeneous sources — self-distillation,
-         data curation, and the engineering to keep multi-GPU pretraining stable.</p>
-    </div>
-    <div class="pillar">
-      <h3>Transfer &amp; data efficiency</h3>
-      <p>What makes one representation serve many downstream tasks? I evaluate frozen encoders across seven task
-         families and across 10%–100% label regimes, and probe the features directly with CKA.</p>
-    </div>
-    <div class="pillar">
-      <h3>Multimodal fusion &amp; LLM agents</h3>
-      <p>Aligning heterogeneous inputs into a shared representation under missing modalities, and designing
-         agent systems — planning, tool use, retrieval, and human-in-the-loop safeguards — on top of them.</p>
-    </div>
-  </div>
+  <h2>Research</h2>
+  <p class="lead">
+    Deep learning in medical imaging is usually built one task at a time: a model for tumor segmentation,
+    another for disease classification, another for outcome prediction — each needing its own carefully
+    annotated dataset. Labels are the bottleneck, and in clinical imaging they are expensive, inconsistent,
+    and scarce.
+  </p>
+  <p class="lead">
+    My work asks whether a <strong>single representation, learned without labels</strong>, can serve all of
+    those tasks instead. That question splits into the three threads I spend most of my time on: how to
+    pretrain at scale on messy real-world image collections, how to evaluate a representation honestly rather
+    than by tuning it into a good score, and how far a representation carries across the shifts that break
+    models in practice — different scanners, different institutions, different modalities.
+  </p>
+  <p class="lead">
+    More recently I have been reading into <strong>LLM-based agents for clinical workflows</strong>, where the
+    interesting problem is grounding an agent's decisions in a domain-pretrained perception model rather than
+    in prompting alone.
+  </p>
 </div></section>
 
 <section id="projects"><div class="wrap">
-  <h2>Selected work</h2>
+  <h2>Selected projects</h2>
 
   <div class="proj">
     <div class="proj-head">
-      <h3>BrainDINO — a single representation that generalizes across tasks</h3>
+      <h3>BrainDINO — one brain MRI representation across many clinical tasks</h3>
       <span class="tag">First author</span>
     </div>
-    <div class="meta">Self-supervised foundation model · DINOv3-style self-distillation · PyTorch, multi-GPU</div>
+    <div class="meta">Self-supervised foundation model · DINO-style self-distillation · <a href="https://arxiv.org/abs/2604.27277">arXiv:2604.27277</a> · <a href="https://github.com/mclwu22/BrainDINO">code</a></div>
 
     <div class="stats">
-      <div class="stat"><span class="n">6.6M</span><span class="l">unlabeled images pretrained on</span></div>
-      <div class="stat"><span class="n">20</span><span class="l">heterogeneous source datasets</span></div>
+      <div class="stat"><span class="n">6.6M</span><span class="l">unlabeled slices pretrained on</span></div>
+      <div class="stat"><span class="n">20</span><span class="l">public neuroimaging datasets</span></div>
       <div class="stat"><span class="n">7</span><span class="l">downstream task families</span></div>
-      <div class="stat"><span class="n">0</span><span class="l">task labels used in pretraining</span></div>
+      <div class="stat"><span class="n">0</span><span class="l">labels used in pretraining</span></div>
     </div>
 
     <p>
-      Most learning-based pipelines in medical imaging are task-specific and label-hungry. BrainDINO asks whether
-      <em>one</em> self-supervised representation can cover endpoints that differ in supervision type, spatial
-      granularity, and semantics — from dense segmentation to coarse classification to continuous regression.
+      A slice-wise brain MRI foundation model trained with a DINO-style teacher–student objective on
+      approximately 6.6 million unlabeled axial slices (52,000+ 3D volumes) drawn from 20 heterogeneous public
+      datasets, spanning wide variation in population, disease, scanner, and acquisition protocol.
     </p>
     <ul>
-      <li><b>Pretraining.</b> Self-distillation on 6.6M unlabeled axial slices aggregated from 20 datasets spanning
-          different populations, diseases, scanners, and acquisition protocols.</li>
-      <li><b>Evaluation protocol.</b> The encoder stays <b>frozen</b>; only lightweight task heads are trained. This
-          isolates representation quality from fine-tuning capacity and makes cross-task comparison honest.</li>
-      <li><b>Coverage.</b> Tumor segmentation, neurodegenerative and neurodevelopmental classification, brain-age
-          estimation, post-stroke temporal prediction, molecular status prediction, sequence classification, and
-          survival modeling.</li>
-      <li><b>Result.</b> Matches or exceeds both natural-image pretraining and domain-specific SSL baselines across
-          tasks, with the <b>largest margins under label scarcity</b> — the regime that actually matters in deployment.</li>
-      <li><b>Analysis.</b> CKA and representation-similarity studies show anatomically organized, pathology-sensitive
-          feature structure emerging without any task supervision.</li>
+      <li>Strict <b>subject-level separation</b> between pretraining and evaluation, so that transfer results
+          measure generalization rather than memorization under cross-dataset distribution shift.</li>
+      <li>Evaluation keeps the backbone <b>frozen</b> and trains only lightweight task heads — isolating
+          representation quality from fine-tuning capacity, and making comparisons across tasks fair.</li>
+      <li>Tested across tumor segmentation, disease classification (autism spectrum disorder, mild cognitive
+          impairment), brain-age and post-stroke temporal estimation, survival prediction, MRI sequence
+          classification, and molecular mutation prediction.</li>
+      <li>Matches or exceeds natural-image pretraining and MRI-specific self-supervised baselines across
+          <b>10–100% label regimes</b>, with the widest margins where supervision is scarcest.</li>
+      <li>Representation analysis (CKA, embedding visualization) shows anatomically organized and
+          pathology-sensitive structure emerging without any task supervision.</li>
     </ul>
-    <!-- TODO: export one figure (e.g. the BraTS backbone comparison or the label-ratio curve) as figures/braindino.png
+    <!-- TODO: export a result figure to figures/braindino.png and uncomment this block.
+         Good candidate on disk: Med_DINOv3/Foundation_model_paper_contents/FINAL_result_overview/
+         brats_backbone_dice_plot_transposed_with_std.png  (or the label-ratio curve)
     <figure>
-      <img src="figures/braindino.png" alt="BrainDINO downstream performance across label ratios">
-      <figcaption>Frozen-encoder transfer across label ratios (10%–100%). Gains widen as labels get scarcer.</figcaption>
+      <img src="figures/braindino.png" alt="BrainDINO transfer performance across label ratios">
+      <figcaption>Frozen-backbone transfer across label ratios. The gap over baselines widens as labels get scarcer.</figcaption>
     </figure>
     -->
-    <p class="relevance">
-      <b>Why it transfers to recommendation:</b> this is scaling-law-driven representation learning on messy,
-      heterogeneous, mostly-unlabeled data — the same problem shape as learning user, product, and content embeddings
-      from behavioral logs, where labels are sparse and the encoder has to serve many downstream heads at once.
-    </p>
   </div>
 
   <div class="proj">
     <div class="proj-head">
-      <h3>Multimodal fusion under missing modalities</h3>
-      <span class="tag">Research</span>
+      <h3>MedDINOv3 — adapting vision foundation models to medical segmentation</h3>
+      <span class="tag">Co-author</span>
     </div>
-    <div class="meta">Cross-attention fusion · survival &amp; risk modeling · cross-site generalization</div>
+    <div class="meta">Domain-adaptive self-supervised pretraining · arXiv:2509.02379 · Jun – Oct 2025</div>
     <p>
-      Real cohorts are ragged: some inputs are missing, some sites differ systematically from others. I built fusion
-      architectures that combine imaging representations with structured clinical variables, and tested them where it
-      hurts — with modalities dropped at inference, and with train/test split across institutions.
+      How much of a natural-image foundation model survives the jump to medical imaging, and what has to be
+      rebuilt? We adapted the DINOv3 self-distillation framework to dense visual representation learning under
+      large appearance and distribution shift, refining a ViT backbone with multi-scale token aggregation for
+      segmentation.
     </p>
     <ul>
-      <li>Cross-attention and cascade fusion designs benchmarked against published baselines under a fixed,
-          pre-registered split protocol.</li>
-      <li>Explicit <b>missing-modality</b> handling rather than complete-case filtering, audited end to end.</li>
-      <li><b>Cross-site transfer</b> (train on one institution's cohort, evaluate on another) as the primary
-          generalization test.</li>
-      <li>Time-to-event heads (DeepHit-style) for risk stratification, not just classification accuracy.</li>
+      <li>Pretrained on <b>CT-3M</b> — 3.8M+ slices assembled from 16 datasets.</li>
+      <li>Evaluated cross-modality and cross-domain transfer between CT and MRI benchmarks.</li>
     </ul>
-    <p class="relevance">
-      <b>Why it transfers:</b> heterogeneous data fusion and alignment is the same core challenge as unifying user
-      behavior, sales time series, and multimodal product content into one representation — including the unglamorous
-      part, where fields are missing and distributions shift between markets.
+  </div>
+
+  <div class="proj">
+    <div class="proj-head">
+      <h3>3D-MedDCNet — detecting small brain metastases</h3>
+      <span class="tag">First author</span>
+    </div>
+    <div class="meta">3D deformable convolutional network · Medical Physics (2025) · Dec 2024 – May 2025</div>
+    <p>
+      Brain metastases are small, numerous, and unevenly distributed — a hard case for detection networks
+      tuned on large, compact lesions. I developed a 3D deformable convolutional architecture for detecting and
+      segmenting them on MRI, improving robustness to extreme scale variation and sparse lesion distribution.
     </p>
   </div>
 
   <div class="proj">
     <div class="proj-head">
-      <h3>LLM agents for high-stakes clinical workflows</h3>
-      <span class="tag">In progress</span>
+      <h3>AnatoMask — reconstruction-guided self-supervised segmentation</h3>
+      <span class="tag">Co-author</span>
     </div>
-    <div class="meta">Multi-agent systems · planning &amp; tool use · RAG · guardrails and human-in-the-loop</div>
+    <div class="meta">Self-masking strategy · ECCV 2024 · 2023 – 2024</div>
     <p>
-      Radiation therapy is a strictly serial pipeline where every stage contains a subjective human decision — which
-      makes it an unusually clean testbed for agents. I mapped the full workflow to its decision points, surveyed the
-      2025–2026 agent literature layer by layer (general VLMs → general agents → medical VLMs → medical agents), and
-      identified where autonomy is already crowded versus genuinely open.
-    </p>
-    <ul>
-      <li>A six-layer literature map tracing how failure modes <b>compound</b> downward: representation alignment →
-          planning and tool reliability → domain shift → auditability and safety → closed-loop latency.</li>
-      <li>Comparative analysis of single-agent vs. multi-agent designs (CoT, RAG, RL-tuned parameter search,
-          reviewer/validator roles) against real deployment constraints.</li>
-      <li>Focus on <b>evaluation and safety</b>: hallucination under domain shift, grounding, explicit safety checks,
-          and auditable workflow decomposition — the parts that decide whether an agent ships.</li>
-      <li>The differentiating angle: coupling a <b>domain-pretrained perception encoder</b> to the agent's decision
-          layer, rather than treating the agent as a domain-agnostic LLM wrapper.</li>
-    </ul>
-    <p class="relevance">
-      <b>Why it transfers:</b> pluggable agent frameworks for task planning, tool use, and multi-turn interaction hit
-      the same walls in e-commerce as in medicine — reliability, evaluation, and safety under real traffic. My interest
-      is specifically in agents grounded in a learned representation, not in prompting alone.
-    </p>
-  </div>
-
-  <div class="proj">
-    <div class="proj-head">
-      <h3>Segmentation systems &amp; reproducible benchmarking</h3>
-      <span class="tag">Engineering</span>
-    </div>
-    <div class="meta">nnU-Net · SAM2 adaptation · 5-fold cross-validation pipelines</div>
-    <p>
-      The infrastructure layer under the research: multi-fold training and evaluation pipelines for volumetric
-      segmentation (OCT, brain tumor), promptable-segmentation adaptation with SAM2, and a benchmarking harness that
-      keeps checkpoint selection, metric computation, significance testing, and figure generation reproducible across
-      dozens of experimental configurations.
-    </p>
-    <p class="relevance">
-      <b>Why it transfers:</b> most of research at scale is making comparisons trustworthy — fixed splits, controlled
-      baselines, statistical significance, and an experiment log you can actually rerun.
+      Rather than masking image patches at random, AnatoMask uses reconstruction difficulty to decide what to
+      hide — steering the pretext task toward anatomically meaningful regions and improving robustness and
+      generalization under limited-label supervision.
     </p>
   </div>
 </div></section>
 
 <section id="publications"><div class="wrap">
   <h2>Publications</h2>
+
   <div class="pub">
-    <div class="t">A single brain MRI representation generalizes across diverse clinical tasks via large-scale
-      self-supervised learning<span class="status">Under review</span></div>
-    <div class="a"><em>Yizhou Wu</em>, Shansong Wang, Yuheng Li, Mingzhe Hu, Mojtaba Safari, Harini Veeraraghavan,
-      Xiaofeng Yang</div>
-    <div class="v">Georgia Institute of Technology · Emory University · Memorial Sloan Kettering Cancer Center</div>
+    <div class="num">6</div>
+    <div>
+      <div class="t">BrainDINO: A Brain MRI Foundation Model for Generalizable Clinical Representation
+        Learning<span class="status">Preprint</span></div>
+      <div class="a"><b>Y. Wu</b>, S. Wang, Y. Li, M. Safari, M. Hu, C.-W. Chang, H. Veeraraghavan, X. Yang</div>
+      <div class="v">arXiv preprint <a href="https://arxiv.org/abs/2604.27277">arXiv:2604.27277</a>, 2026</div>
+    </div>
   </div>
-  <!-- TODO: add your other publications here, copy the .pub block above.
-       Include workshop papers, co-authored papers, and preprints — list everything. -->
+
+  <div class="pub">
+    <div class="num">5</div>
+    <div>
+      <div class="t">Detection and Segmentation of Brain Metastases on MRI Using 3D-MedDCNet</div>
+      <div class="a"><b>Y. Wu</b>, Y. Li, M. Hu, C.-W. Chang, R. L. J. Qiu, T. Wang, H.-K. Shu, H. Mao, Z. Tian, X. Yang</div>
+      <div class="v"><em>Medical Physics</em>, 52(7), e18001, 2025</div>
+    </div>
+  </div>
+
+  <div class="pub">
+    <div class="num">4</div>
+    <div>
+      <div class="t">MedDINOv3: How to Adapt Vision Foundation Models for Medical Image Segmentation?</div>
+      <div class="a">Y. Li, <b>Y. Wu</b>, Y. Lai, M. Hu, X. Yang</div>
+      <div class="v">arXiv preprint <a href="https://arxiv.org/abs/2509.02379">arXiv:2509.02379</a>, 2025</div>
+    </div>
+  </div>
+
+  <div class="pub">
+    <div class="num">3</div>
+    <div>
+      <div class="t">Automatic Medical Imaging Segmentation via Self-supervising Large-scale Convolutional
+        Neural Networks</div>
+      <div class="a">Y. Li, J. F. Wynne, <b>Y. Wu</b>, R. L. J. Qiu, S. Tian, T. Wang, P. R. Patel, D. S. Yu, X. Yang</div>
+      <div class="v"><em>Radiotherapy and Oncology</em>, 204, 110711, 2025</div>
+    </div>
+  </div>
+
+  <div class="pub">
+    <div class="num">2</div>
+    <div>
+      <div class="t">Current Progress of Digital Twin Construction Using Medical Imaging</div>
+      <div class="a">F. Zhao, <b>Y. Wu</b>, M. Hu, C.-W. Chang, R. Liu, R. Qiu, X. Yang</div>
+      <div class="v"><em>Journal of Applied Clinical Medical Physics</em>, 26(9), e70226, 2025</div>
+    </div>
+  </div>
+
+  <div class="pub">
+    <div class="num">1</div>
+    <div>
+      <div class="t">AnatoMask: Enhancing Medical Image Segmentation with Reconstruction-guided Self-masking</div>
+      <div class="a">Y. Li, T. Luan, <b>Y. Wu</b>, S. Pan, Y. Chen, X. Yang</div>
+      <div class="v"><em>European Conference on Computer Vision (ECCV)</em>, 146–163, 2024</div>
+    </div>
+  </div>
+</div></section>
+
+<section id="experience"><div class="wrap">
+  <h2>Experience</h2>
+  <div class="entry">
+    <div class="entry-head">
+      <h3>MR Application / PSD Development Engineer Intern</h3>
+      <span class="when">May – Aug 2024</span>
+    </div>
+    <div class="where">GE Healthcare</div>
+    <p>
+      Built safety-critical 3D computer vision models for anatomical detection under partial observability and
+      truncated fields of view — the conditions under which a scout-based detector is most likely to fail.
+    </p>
+    <ul>
+      <li>Queried internal clinical imaging databases in <b>SQL</b> to identify and retrieve MRI cohorts for
+          model development and validation.</li>
+      <li>Implemented 3D MRI SAR GradWarp correction for reconstruction; system-level implementation in <b>C++</b>.</li>
+      <li>Built end-to-end pipelines covering data collection, labeling, training, evaluation, and deployment,
+          containerized with <b>Docker</b> under strict reliability constraints.</li>
+      <li>Deployed as an internal safety modeling component at GE Healthcare.</li>
+    </ul>
+  </div>
+</div></section>
+
+<section id="education"><div class="wrap">
+  <h2>Education</h2>
+  <div class="entry">
+    <div class="entry-head">
+      <h3>PhD, Electrical Engineering (Medical Imaging &amp; AI)</h3>
+      <span class="when">Expected May 2028</span>
+    </div>
+    <div class="where">Georgia Institute of Technology · GPA 3.9/4.0</div>
+  </div>
+  <div class="entry">
+    <div class="entry-head">
+      <h3>BS, Electrical Engineering (2nd major: Computer Science)</h3>
+      <span class="when">May 2023</span>
+    </div>
+    <div class="where">University of Wisconsin–Madison · GPA 3.7/4.0 (EE major 3.9/4.0) · Dean's List</div>
+  </div>
 </div></section>
 
 <section id="skills"><div class="wrap">
   <h2>Skills</h2>
   <dl class="skills">
-    <dt>Languages</dt>
-    <dd>Python, R, MATLAB, Bash, SQL <!-- TODO: cut anything you would not want to be interviewed on --></dd>
-    <dt>ML / DL</dt>
-    <dd>PyTorch, self-supervised learning (DINO / DINOv3, BYOL, PCRL), Vision Transformers, multimodal fusion,
-        survival modeling, nnU-Net, SAM2, Hugging Face</dd>
-    <dt>Training at scale</dt>
-    <dd>Multi-GPU distributed training, mixed-precision training, large-scale data curation and preprocessing
-        pipelines, checkpoint and experiment management</dd>
-    <dt>LLM systems</dt>
-    <dd>LLM agents, multi-agent orchestration, retrieval-augmented generation, tool use, evaluation and guardrail design</dd>
-    <dt>Analysis</dt>
-    <dd>Representation analysis (CKA), cross-site generalization protocols, statistical significance testing,
-        scientific visualization</dd>
+    <dt>Programming</dt>
+    <dd>Python, C/C++, MATLAB, SQL</dd>
+    <dt>Deep learning</dt>
+    <dd>PyTorch, TensorFlow; Vision Transformers, CNNs; self-supervised learning, contrastive learning,
+        masked modeling, self-distillation, transfer learning</dd>
+    <dt>Evaluation &amp; analysis</dt>
+    <dd>Representation evaluation (CKA), embedding visualization (t-SNE), robustness analysis,
+        statistical validation</dd>
+    <dt>Medical imaging</dt>
+    <dd>Multimodal medical imaging analysis, survival modeling (Cox regression), cross-domain transfer</dd>
+    <dt>Systems</dt>
+    <dd>Linux/Unix, Git, Docker, reproducible ML pipelines</dd>
   </dl>
+</div></section>
+
+<section id="service"><div class="wrap">
+  <h2>Service &amp; teaching</h2>
+  <div class="two">
+    <div>
+      <h3>Reviewer</h3>
+      <ul>
+        <li><em>IEEE Transactions on Medical Imaging</em> (2025)</li>
+        <li><em>Medical Physics</em> (2026)</li>
+        <li>MICCAI (2025)</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Teaching</h3>
+      <ul>
+        <li>Undergraduate Teaching Assistant, University of Wisconsin–Madison, 2022–2023</li>
+        <li>ECE 532: Matrix Methods in Machine Learning</li>
+        <li>ECE 252: Introduction to Computer Engineering</li>
+      </ul>
+    </div>
+  </div>
 </div></section>
 
 <section id="contact"><div class="wrap">
   <h2>Contact</h2>
-  <p>I'm looking for a <strong>2027 research internship</strong> in large-scale representation learning,
-     multimodal foundation models, and LLM-based recommendation systems. Happy to talk about any of the above.</p>
+  <p class="lead">
+    Happy to talk about representation learning, foundation models, or anything above. The fastest way to
+    reach me is email.
+  </p>
   <div class="contact-list">
     <a href="mailto:ywu3024@gatech.edu">ywu3024@gatech.edu</a>
     <a href="https://github.com/mclwu22">GitHub</a>
-    <a href="#">Google Scholar</a><!-- TODO -->
-    <a href="#">LinkedIn</a><!-- TODO -->
+    <a href="https://scholar.google.com/citations?user=cyNeIz0AAAAJ&amp;hl=en">Google Scholar</a>
+    <a href="Yizhou_Wu_CV.pdf">CV</a>
   </div>
 </div></section>
 
