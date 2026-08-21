@@ -64,21 +64,6 @@ h2{font-size:13.5px; text-transform:uppercase; letter-spacing:.09em; color:var(-
 
 .proj{padding:26px 0; border-top:1px solid var(--line)}
 .proj:first-of-type{border-top:none; padding-top:0}
-details.proj{padding:0}
-details.proj summary{list-style:none; cursor:pointer; padding:20px 34px 20px 0; position:relative}
-details.proj:first-of-type summary{padding-top:0}
-details.proj summary::-webkit-details-marker{display:none}
-details.proj summary::after{content:""; position:absolute; right:8px; top:27px; width:8px; height:8px;
-  border-right:2px solid var(--fg-soft); border-bottom:2px solid var(--fg-soft);
-  transform:rotate(45deg); transition:transform .18s ease}
-details.proj:first-of-type summary::after{top:7px}
-details.proj[open] summary::after{transform:rotate(-135deg); border-color:var(--accent)}
-details.proj summary:hover .proj-title{color:var(--accent)}
-details.proj summary .proj-head{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:5px}
-details.proj summary .meta{display:block}
-.proj-title{font-size:19.5px; font-weight:650; letter-spacing:-0.01em}
-.proj-body{padding:2px 0 24px}
-.proj-body > :last-child{margin-bottom:0}
 .proj-head{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:5px}
 .proj h3{font-size:19.5px; letter-spacing:-0.01em}
 .tag{font-size:11.5px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
@@ -175,30 +160,34 @@ footer{padding:32px 0 54px; color:var(--fg-soft); font-size:14px}
 <section id="research"><div class="wrap">
   <h2>Research</h2>
   <p class="lead">
-    Deep learning in medical imaging is usually built one task at a time, each model needing its own
-    annotated dataset — and labels are the bottleneck: expensive, inconsistent, and scarce.
+    Deep learning in medical imaging is usually built one task at a time: a model for tumor segmentation,
+    another for disease classification, another for outcome prediction — each needing its own carefully
+    annotated dataset. Labels are the bottleneck, and in clinical imaging they are expensive, inconsistent,
+    and scarce.
   </p>
   <p class="lead">
     My work asks whether a <strong>single representation, learned without labels</strong>, can serve all of
-    them instead: how to pretrain at scale on messy real-world data, how to evaluate a representation
-    honestly rather than tuning it into a good score, and how far it carries across the shifts that break
-    models in practice — different scanners, institutions, modalities.
+    those tasks instead. That question splits into the three threads I spend most of my time on: how to
+    pretrain at scale on messy real-world image collections, how to evaluate a representation honestly rather
+    than by tuning it into a good score, and how far a representation carries across the shifts that break
+    models in practice — different scanners, different institutions, different modalities.
   </p>
   <p class="lead">
-    More recently I have been reading into <strong>LLM-based agents</strong>, and how to ground an agent's
-    decisions in a domain-pretrained perception model rather than in prompting alone.
+    More recently I have been reading into <strong>LLM-based agents for clinical workflows</strong>, where the
+    interesting problem is grounding an agent's decisions in a domain-pretrained perception model rather than
+    in prompting alone.
   </p>
 </div></section>
 
 <section id="projects"><div class="wrap">
   <h2>Selected projects</h2>
 
-  <details class="proj">
-    <summary>
-      <span class="proj-head"><span class="proj-title">BrainDINO — one brain MRI representation across many clinical tasks</span><span class="tag">First author</span></span>
-      <span class="meta">Self-supervised foundation model · DINO-style self-distillation · <a href="https://arxiv.org/abs/2604.27277">arXiv:2604.27277</a> · <a href="https://github.com/mclwu22/BrainDINO">code</a></span>
-    </summary>
-    <div class="proj-body">
+  <div class="proj">
+    <div class="proj-head">
+      <h3>BrainDINO — one brain MRI representation across many clinical tasks</h3>
+      <span class="tag">First author</span>
+    </div>
+    <div class="meta">Self-supervised foundation model · DINO-style self-distillation · <a href="https://arxiv.org/abs/2604.27277">arXiv:2604.27277</a> · <a href="https://github.com/mclwu22/BrainDINO">code</a></div>
 
     <div class="stats">
       <div class="stat"><span class="n">6.6M</span><span class="l">unlabeled slices pretrained on</span></div>
@@ -234,15 +223,14 @@ footer{padding:32px 0 54px; color:var(--fg-soft); font-size:14px}
       <figcaption>Frozen-backbone transfer across label ratios. The gap over baselines widens as labels get scarcer.</figcaption>
     </figure>
     -->
-    </div>
-  </details>
+  </div>
 
-  <details class="proj">
-    <summary>
-      <span class="proj-head"><span class="proj-title">Anticipatory digital twins for adaptive proton therapy</span><span class="tag">First author</span></span>
-      <span class="meta">Foundation-model deformable registration · MICCAI 2026 Workshop DT4H (oral)</span>
-    </summary>
-    <div class="proj-body">
+  <div class="proj">
+    <div class="proj-head">
+      <h3>Anticipatory digital twins for adaptive proton therapy</h3>
+      <span class="tag">First author</span>
+    </div>
+    <div class="meta">Foundation-model deformable registration · MICCAI 2026 Workshop DT4H (oral)</div>
     <p>
       Head-and-neck proton therapy is unusually sensitive to anatomy that shifts over a 4–6 week course —
       tumors shrink, patients lose weight, and the Bragg peak lands somewhere it shouldn't. Replanning on the
@@ -261,15 +249,14 @@ footer{padding:32px 0 54px; color:var(--fg-soft); font-size:14px}
       <li>The gains land where they should — largest for patients with major anatomical change, negligible
           when anatomy is stable.</li>
     </ul>
-    </div>
-  </details>
+  </div>
 
-  <details class="proj">
-    <summary>
-      <span class="proj-head"><span class="proj-title">MedDINOv3 — adapting vision foundation models to medical segmentation</span><span class="tag">Co-author</span></span>
-      <span class="meta">Domain-adaptive self-supervised pretraining · arXiv:2509.02379 · Jun – Oct 2025</span>
-    </summary>
-    <div class="proj-body">
+  <div class="proj">
+    <div class="proj-head">
+      <h3>MedDINOv3 — adapting vision foundation models to medical segmentation</h3>
+      <span class="tag">Co-author</span>
+    </div>
+    <div class="meta">Domain-adaptive self-supervised pretraining · arXiv:2509.02379 · Jun – Oct 2025</div>
     <p>
       How much of a natural-image foundation model survives the jump to medical imaging, and what has to be
       rebuilt? We adapted the DINOv3 self-distillation framework to dense visual representation learning under
@@ -280,51 +267,47 @@ footer{padding:32px 0 54px; color:var(--fg-soft); font-size:14px}
       <li>Pretrained on <b>CT-3M</b> — 3.8M+ slices assembled from 16 datasets.</li>
       <li>Evaluated cross-modality and cross-domain transfer between CT and MRI benchmarks.</li>
     </ul>
-    </div>
-  </details>
+  </div>
 
-  <details class="proj">
-    <summary>
-      <span class="proj-head"><span class="proj-title">3D-MedDCNet — detecting small brain metastases</span><span class="tag">First author</span></span>
-      <span class="meta">3D deformable convolutional network · Medical Physics (2025) · Dec 2024 – May 2025</span>
-    </summary>
-    <div class="proj-body">
+  <div class="proj">
+    <div class="proj-head">
+      <h3>3D-MedDCNet — detecting small brain metastases</h3>
+      <span class="tag">First author</span>
+    </div>
+    <div class="meta">3D deformable convolutional network · Medical Physics (2025) · Dec 2024 – May 2025</div>
     <p>
       Brain metastases are small, numerous, and unevenly distributed — a hard case for detection networks
       tuned on large, compact lesions. I developed a 3D deformable convolutional architecture for detecting and
       segmenting them on MRI, improving robustness to extreme scale variation and sparse lesion distribution.
     </p>
-    </div>
-  </details>
+  </div>
 
-  <details class="proj">
-    <summary>
-      <span class="proj-head"><span class="proj-title">AnatoMask — reconstruction-guided self-supervised segmentation</span><span class="tag">Co-author</span></span>
-      <span class="meta">Self-masking strategy · ECCV 2024 · 2023 – 2024</span>
-    </summary>
-    <div class="proj-body">
+  <div class="proj">
+    <div class="proj-head">
+      <h3>AnatoMask — reconstruction-guided self-supervised segmentation</h3>
+      <span class="tag">Co-author</span>
+    </div>
+    <div class="meta">Self-masking strategy · ECCV 2024 · 2023 – 2024</div>
     <p>
       Rather than masking image patches at random, AnatoMask uses reconstruction difficulty to decide what to
       hide — steering the pretext task toward anatomically meaningful regions and improving robustness and
       generalization under limited-label supervision.
     </p>
-    </div>
-  </details>
+  </div>
 
-  <details class="proj">
-    <summary>
-      <span class="proj-head"><span class="proj-title"><a href="projects/generative-recsys.html">Generative sequential recommendation on Amazon Reviews 2023</a></span><span class="tag">Course project</span></span>
-      <span class="meta">PySpark data engineering + TIGER reproduction · ECE 8803 (ST: Conversational AI) · Fall 2025</span>
-    </summary>
-    <div class="proj-body">
+  <div class="proj">
+    <div class="proj-head">
+      <h3><a href="projects/generative-recsys.html">Generative sequential recommendation on Amazon Reviews 2023</a></h3>
+      <span class="tag">Course project</span>
+    </div>
+    <div class="meta">PySpark data engineering + TIGER reproduction · ECE 8803 (ST: Conversational AI) · Fall 2025</div>
     <p>
       A course reproduction of TIGER, in two halves: a PySpark stage turning 59.77M raw reviews into a
       leave-one-out benchmark, and an RQ-VAE compressing frozen Sentence-T5 embeddings into discrete
       Semantic IDs for generative retrieval. Mostly an exercise in measuring where the time actually goes.
       <a href="projects/generative-recsys.html">Full write-up &rarr;</a>
     </p>
-    </div>
-  </details>
+  </div>
 </div></section>
 
 <section id="publications"><div class="wrap">
@@ -343,15 +326,6 @@ footer{padding:32px 0 54px; color:var(--fg-soft); font-size:14px}
   <div class="pub">
     <div class="num">6</div>
     <div>
-      <div class="t">AnatoMask: Enhancing Medical Image Segmentation with Reconstruction-guided Self-masking</div>
-      <div class="a">Y. Li, T. Luan, <b>Y. Wu</b>, S. Pan, Y. Chen, X. Yang</div>
-      <div class="v"><em>European Conference on Computer Vision (ECCV)</em>, 146–163, 2024</div>
-    </div>
-  </div>
-
-  <div class="pub">
-    <div class="num">5</div>
-    <div>
       <div class="t">Anticipatory Digital Twins for Online Head-and-Neck Adaptive Proton Therapy via
         Foundation-Model Registration<span class="status">Oral</span></div>
       <div class="a"><b>Y. Wu</b>, Y. Li, X. Yang, C.-W. Chang</div>
@@ -360,7 +334,7 @@ footer{padding:32px 0 54px; color:var(--fg-soft); font-size:14px}
   </div>
 
   <div class="pub">
-    <div class="num">4</div>
+    <div class="num">5</div>
     <div>
       <div class="t">Detection and Segmentation of Brain Metastases on MRI Using 3D-MedDCNet</div>
       <div class="a"><b>Y. Wu</b>, Y. Li, M. Hu, C.-W. Chang, R. L. J. Qiu, T. Wang, H.-K. Shu, H. Mao, Z. Tian, X. Yang</div>
@@ -369,7 +343,7 @@ footer{padding:32px 0 54px; color:var(--fg-soft); font-size:14px}
   </div>
 
   <div class="pub">
-    <div class="num">3</div>
+    <div class="num">4</div>
     <div>
       <div class="t">MedDINOv3: How to Adapt Vision Foundation Models for Medical Image Segmentation?</div>
       <div class="a">Y. Li, <b>Y. Wu</b>, Y. Lai, M. Hu, X. Yang</div>
@@ -378,7 +352,7 @@ footer{padding:32px 0 54px; color:var(--fg-soft); font-size:14px}
   </div>
 
   <div class="pub">
-    <div class="num">2</div>
+    <div class="num">3</div>
     <div>
       <div class="t">Automatic Medical Imaging Segmentation via Self-supervising Large-scale Convolutional
         Neural Networks</div>
@@ -388,11 +362,20 @@ footer{padding:32px 0 54px; color:var(--fg-soft); font-size:14px}
   </div>
 
   <div class="pub">
-    <div class="num">1</div>
+    <div class="num">2</div>
     <div>
       <div class="t">Current Progress of Digital Twin Construction Using Medical Imaging</div>
       <div class="a">F. Zhao, <b>Y. Wu</b>, M. Hu, C.-W. Chang, R. Liu, R. Qiu, X. Yang</div>
       <div class="v"><em>Journal of Applied Clinical Medical Physics</em>, 26(9), e70226, 2025</div>
+    </div>
+  </div>
+
+  <div class="pub">
+    <div class="num">1</div>
+    <div>
+      <div class="t">AnatoMask: Enhancing Medical Image Segmentation with Reconstruction-guided Self-masking</div>
+      <div class="a">Y. Li, T. Luan, <b>Y. Wu</b>, S. Pan, Y. Chen, X. Yang</div>
+      <div class="v"><em>European Conference on Computer Vision (ECCV)</em>, 146–163, 2024</div>
     </div>
   </div>
 </div></section>
