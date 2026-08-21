@@ -275,11 +275,9 @@ footer{padding:32px 0 54px; color:var(--fg-soft); font-size:14px}
     </div>
     <div class="meta">PySpark data engineering + TIGER reproduction · ECE 8803 (ST: Conversational AI) · Fall 2025</div>
     <p>
-      An end-to-end pipeline in two halves: a PySpark stage turning 59.77M raw reviews into a leave-one-out
-      benchmark, and an RQ-VAE compressing frozen Sentence-T5 embeddings into discrete Semantic IDs for
-      generative retrieval. Largely an exercise in measuring where the time actually goes — caching took an
-      iterative k-core job from killed to 237&nbsp;s, and quantifying skew showed a 1160&times; hot-key ratio
-      producing only 1.05&ndash;1.18&times; partition imbalance.
+      A course reproduction of TIGER, in two halves: a PySpark stage turning 59.77M raw reviews into a
+      leave-one-out benchmark, and an RQ-VAE compressing frozen Sentence-T5 embeddings into discrete
+      Semantic IDs for generative retrieval. Mostly an exercise in measuring where the time actually goes.
       <a href="projects/generative-recsys.html">Full write-up &rarr;</a>
     </p>
   </div>
