@@ -89,8 +89,10 @@ footer{padding:30px 0 52px; color:var(--fg-soft); font-size:14px}
     An end-to-end generative sequential recommendation pipeline built in two connected halves: a PySpark stage
     that turns 59.77M raw Amazon reviews into a clean leave-one-out benchmark, and a reproduction of TIGER —
     RQ-VAE Semantic IDs feeding generative retrieval. Everything runs on one machine (32 cores, 251 GB RAM,
-    RTX 6000 Ada): no cluster, no cloud. The point of the project was less to hit a number than to measure
-    where the time actually goes, and to report what the measurements said even when they said "no effect."
+    RTX 6000 Ada): no cluster, no cloud. The Spark half retraces a pipeline demonstrated in the course,
+    rebuilt and instrumented from scratch; the TIGER half is my own implementation. Either way the point was
+    less to hit a number than to measure where the time actually goes, and to report what the measurements
+    said even when they said "no effect."
   </p>
   <div class="badges">
     <span class="badge">PySpark</span>
@@ -106,8 +108,8 @@ footer{padding:30px 0 52px; color:var(--fg-soft); font-size:14px}
   <h2>Design judgment</h2>
   <div class="callout">
     <b>A 40 GB working set against 251 GB of RAM.</b> A cluster would only have added shuffle overhead across
-    the network for a dataset that fits in memory, so I deliberately ran Spark in local mode and spent the
-    effort on the bottlenecks that actually bind at this scale: caching in iterative jobs, join strategy, and
+    the network for data that already fits in memory, so the pipeline runs in Spark local mode and the effort
+    goes into the bottlenecks that actually bind at this scale: caching in iterative jobs, join strategy, and
     partition-level skew. Distribution is a cost, not a default.
   </div>
 </div></section>
