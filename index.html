@@ -227,6 +227,32 @@ footer{padding:32px 0 54px; color:var(--fg-soft); font-size:14px}
 
   <div class="proj">
     <div class="proj-head">
+      <h3>Anticipatory digital twins for adaptive proton therapy</h3>
+      <span class="tag">First author</span>
+    </div>
+    <div class="meta">Foundation-model deformable registration · MICCAI 2026 Workshop DT4H (oral)</div>
+    <p>
+      Head-and-neck proton therapy is unusually sensitive to anatomy that shifts over a 4–6 week course —
+      tumors shrink, patients lose weight, and the Bragg peak lands somewhere it shouldn't. Replanning on the
+      anatomy of the day normally means acquiring another CT and waiting about a week. This work asks whether
+      that anatomy can be predicted <em>before</em> the scan, by transferring longitudinal change from a
+      population of prior patients.
+    </p>
+    <ul>
+      <li>A pretrained deformable registration foundation model is used <b>zero-shot</b> — no patient-specific
+          training. One registration carries a prior patient's during-treatment CT into the target's frame; a
+          second estimates that prior's planning-to-treatment change and applies it to the target's own
+          planning CT, propagating contours along with it.</li>
+      <li>Across <b>88</b> head-and-neck patients (a planning CT and three QA CTs each), the synthesized CTs
+          matched treatment-day anatomy better than the static planning CT: normalized cross-correlation
+          <b>+22.8%</b>, organ-at-risk Dice <b>+20.2%</b>, CT-number error <b>−23.4%</b>.</li>
+      <li>The gains land where they should — largest for patients with major anatomical change, negligible
+          when anatomy is stable.</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <div class="proj-head">
       <h3>MedDINOv3 — adapting vision foundation models to medical segmentation</h3>
       <span class="tag">Co-author</span>
     </div>
@@ -288,12 +314,22 @@ footer{padding:32px 0 54px; color:var(--fg-soft); font-size:14px}
   <h2>Publications</h2>
 
   <div class="pub">
-    <div class="num">6</div>
+    <div class="num">7</div>
     <div>
       <div class="t">BrainDINO: A Brain MRI Foundation Model for Generalizable Clinical Representation
         Learning<span class="status">Preprint</span></div>
       <div class="a"><b>Y. Wu</b>, S. Wang, Y. Li, M. Safari, M. Hu, C.-W. Chang, H. Veeraraghavan, X. Yang</div>
       <div class="v">arXiv preprint <a href="https://arxiv.org/abs/2604.27277">arXiv:2604.27277</a>, 2026</div>
+    </div>
+  </div>
+
+  <div class="pub">
+    <div class="num">6</div>
+    <div>
+      <div class="t">Anticipatory Digital Twins for Online Head-and-Neck Adaptive Proton Therapy via
+        Foundation-Model Registration<span class="status">Oral</span></div>
+      <div class="a"><b>Y. Wu</b>, Y. Li, X. Yang, C.-W. Chang</div>
+      <div class="v">MICCAI 2026 Workshop on Digital Twins for Health (DT4H), 2026</div>
     </div>
   </div>
 
