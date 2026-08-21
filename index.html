@@ -91,7 +91,11 @@ details.proj summary .meta{display:block}
 .stat .n{font-size:23px; font-weight:680; letter-spacing:-0.02em; display:block}
 .stat .l{font-size:13px; color:var(--fg-soft)}
 figure{margin:16px 0 4px}
-figure img{width:100%; border-radius:10px; border:1px solid var(--line); background:var(--bg-soft)}
+figure img{width:100%; display:block; border-radius:10px; border:1px solid var(--line);
+  background:#fff; padding:10px}
+.figrow{display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start}
+@media (max-width:720px){.figrow{grid-template-columns:1fr}}
+.figrow figure{margin:0}
 figcaption{font-size:13.5px; color:var(--fg-soft); margin-top:8px}
 
 .pub{padding:15px 0; border-top:1px solid var(--line); display:grid;
@@ -209,7 +213,7 @@ footer{padding:32px 0 54px; color:var(--fg-soft); font-size:14px}
 
     <p>
       A slice-wise brain MRI foundation model trained with a DINO-style teacher–student objective on
-      approximately 6.6 million unlabeled 2D axial slices (52,000+ volumes &times; 128 slices) drawn from 20
+      approximately 6.6 million unlabeled 2D axial slices (51.5k volumes &times; ~128 slices) drawn from 20
       heterogeneous public datasets, spanning wide variation in population, disease, scanner, and acquisition
       protocol.
     </p>
@@ -226,14 +230,24 @@ footer{padding:32px 0 54px; color:var(--fg-soft); font-size:14px}
       <li>Representation analysis (CKA, embedding visualization) shows anatomically organized and
           pathology-sensitive structure emerging without any task supervision.</li>
     </ul>
-    <!-- TODO: export a result figure to figures/braindino.png and uncomment this block.
-         Good candidate on disk: Med_DINOv3/Foundation_model_paper_contents/FINAL_result_overview/
-         brats_backbone_dice_plot_transposed_with_std.png  (or the label-ratio curve)
     <figure>
-      <img src="figures/braindino.png" alt="BrainDINO transfer performance across label ratios">
-      <figcaption>Frozen-backbone transfer across label ratios. The gap over baselines widens as labels get scarcer.</figcaption>
-    </figure>
-    -->
+        <img src="figures/braindino-transfer.png"
+             alt="Radar chart: BrainDINO versus four baselines across 15 downstream tasks">
+        <figcaption>
+          Frozen-encoder transfer across 15 downstream tasks, against two natural-image and
+          medical-imaging SSL baselines each. BrainDINO (blue) sits at or above every baseline on every axis.
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img src="figures/braindino-patch-similarity.jpg"
+             alt="Patch similarity maps for tumor, CSF and white-matter reference points across five models">
+        <figcaption>
+          Similarity between a single reference patch (tumor, CSF, white matter) and every other patch in the
+          slice. BrainDINO's maps localize onto the corresponding anatomy; the baselines light up broadly
+          across the whole brain. No labels were used anywhere in pretraining.
+        </figcaption>
+      </figure>
     </div>
   </details>
 
